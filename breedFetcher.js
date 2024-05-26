@@ -1,10 +1,16 @@
 const needle = require("needle");
 
-const breedFetcher = function() {
-  needle.get('https://api.thecatapi.com/v1/breeds/search?q=sib', function(error, response) {
-    if (!error && response.statusCode === 200)
-      console.log(response.body);
-  });
+const fetchBreedDescription = function(breedName, callback) {
+  needle.get('https://api.thecatapi.com/v1/breeds/search?q=sib');
+};
+const callback = (error, breedDescription) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(breedDescription);
+  }
 };
 
-module.exports(breedFetcher);
+fetchBreedDescription('sib', callback);
+
+module.exports = fetchBreedDescription;
