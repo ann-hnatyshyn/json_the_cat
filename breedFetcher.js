@@ -1,9 +1,7 @@
 const needle = require("needle");
 
-const fetchBreedDescription = function(breedName, callback) {
+const fetchBreedDescription = (error, breedDescription) => {
   needle.get('https://api.thecatapi.com/v1/breeds/search?q=sib');
-};
-const callback = (error, breedDescription) => {
   if (error) {
     console.error(error);
   } else {
@@ -11,6 +9,6 @@ const callback = (error, breedDescription) => {
   }
 };
 
-fetchBreedDescription('sib', callback);
+fetchBreedDescription();
 
 module.exports = fetchBreedDescription;
